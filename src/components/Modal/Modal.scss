@@ -1,0 +1,47 @@
+.modal_backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 20;
+}
+
+.modal_window {
+  position: relative;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  width: 640px;
+  border-radius: 4px;
+  background-color: #141414;
+}
+
+.close_btn {
+  position: absolute;
+  padding: 8px;
+  right: 16px;
+  top: 16px;
+  font-size: 40px;
+  line-height: 24px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.title {
+  font-weight: 400;
+  color: #fff;
+}
+
+.logo {
+  position: absolute;
+  left: 48px;
+  top: 18px;
+  font-size: 22px;
+  line-height: 22px;
+  color: #f65261;
+}

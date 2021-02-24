@@ -1,4 +1,5 @@
 button {
+  width: 144px;
   font-size: 18px;
   border: none;
   border-radius: 4px;
@@ -12,8 +13,7 @@ button {
 }
 
 .adding {
-  width: 144px;
-  padding: 10px 0;
+  padding: 11px 0;
   background-color: #55555585;
   color: #f65261;
 }
@@ -23,4 +23,17 @@ button {
   padding: 16px 0;
   background-color: #f65261;
   color: #fff;
+}
+
+.confirm {
+  padding: 12px 0;
+  background-color: #f65261;
+  color: #fff;
+}
+
+.reset {
+  padding: 11px 0;
+  background-color: transparent;
+  border: 1px solid #f65261;
+  color: #f65261;
 }
