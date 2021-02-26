@@ -17,7 +17,6 @@ export const MovieList = () => {
       setMovie((state) => ({ ...state, isOpen: false }))
     }
   }
-
   const getMovie = (id, status, isOpen) => {
     setMovie({ status, isOpen, movieData: movies.data.find((movie) => movie.id === id) })
   }
