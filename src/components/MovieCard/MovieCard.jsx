@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import className from 'classnames'
 import { CardMenu } from './CardMenu/CardMenu'
-import { getReleaseYear, useCorrectGenres } from '../../utils/helpers'
+import { getReleaseYear, getCorrectGenres } from '../../utils/helpers'
 import { ImageWithFallback } from '../ImageWithFallback/ImageWithFallback'
 import styles from './MovieCard.scss'
 
@@ -26,7 +26,7 @@ export const MovieCard = ({ title, genres, date, poster, id, getMovie }) => {
         <div className={styles.movie__data}>
           <div className={styles.movie__data_info}>
             <h2 className={styles.movie__data_info_title}>{title}</h2>
-            <p className={styles.movie__data_info_genres}>{useCorrectGenres(genres)}</p>
+            <p className={styles.movie__data_info_genres}>{getCorrectGenres(genres)}</p>
           </div>
           <div className={styles.movie__data_date}>
             <span>{getReleaseYear(date)}</span>
