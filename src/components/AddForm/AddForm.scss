@@ -1,23 +1,8 @@
 .form {
-  padding: 16px 0;
+  padding: 16px 0 0 0;
   display: flex;
   flex-direction: column;
   color: #f65261;
-
-  & input[type='date'] {
-    color: #a9a9a9c0;
-  }
-
-  & input[type='date']::-webkit-calendar-picker-indicator {
-    cursor: pointer;
-    opacity: 0.6;
-    outline: none;
-    filter: invert(1);
-
-    &:hover {
-      opacity: 1;
-    }
-  }
 }
 
 .label {
@@ -25,24 +10,12 @@
   flex-direction: column;
 }
 
-.input {
-  margin: 8px 0 0 0;
-  padding: 0 16px;
-  background-color: #232323c9;
-  border-radius: 5px;
-  border-width: 0;
-  font-size: 24px;
-  line-height: 48px;
-  color: #fff;
-  outline: none;
-}
-
 .btns {
   display: flex;
   justify-content: flex-end;
   margin: 64px 0 0 0;
 
-  & button[type='reset'] {
-    margin: 0 16px 0 0;
+  & button {
+    margin: 0 0 0 16px;
   }
 }

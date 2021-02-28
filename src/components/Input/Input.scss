@@ -1,0 +1,33 @@
+.label {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  margin: 8px 0 0 0;
+  padding: 0 16px;
+  background-color: #232323c9;
+  border-radius: 5px;
+  border-width: 0;
+  font-size: 24px;
+  line-height: 48px;
+  color: #fff;
+  outline: none;
+}
+
+input[type='number'] {
+  padding: 0;
+  margin: 0;
+  background-color: #141414;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+  outline: none;
+  filter: invert(1);
+
+  &:hover {
+    opacity: 1;
+  }
+}

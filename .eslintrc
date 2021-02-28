@@ -26,6 +26,7 @@
     "react/require-default-props": 0,
     "jsx-a11y/label-has-associated-control": ["off"],
     "no-shadow": ["off"],
-    "react/destructuring-assignment": 0
+    "react/destructuring-assignment": 0,
+    "camelcase": ["off"]
   }
 }

@@ -2,14 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './Button.scss'
 
-export const Button = ({ type = 'button', styleType, children, onClick }) => (
-  <button type={type} onClick={onClick} className={styles[styleType]}>
+export const Button = ({ isClose, styleType, children, onClick }) => (
+  <button data-close={isClose} onClick={onClick} className={styles[styleType]}>
     {children}
   </button>
 )
 
 Button.propTypes = {
-  type: PropTypes.string,
+  isClose: PropTypes.bool,
   children: PropTypes.node.isRequired,
   styleType: PropTypes.string.isRequired,
   onClick: PropTypes.func,
