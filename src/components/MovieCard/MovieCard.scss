@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  background-color: #232323;
 }
 
 .menu {
@@ -18,6 +18,7 @@
   position: relative;
   padding-top: 148%;
   overflow: hidden;
+  background-color: #fff;
   cursor: pointer;
 
   & img {

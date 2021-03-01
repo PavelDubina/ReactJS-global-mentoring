@@ -1,23 +1,18 @@
 import React from 'react'
+import { useField } from 'formik'
 import PropTypes from 'prop-types'
 import styles from './Input.scss'
 
-export const Input = ({ title, name, type, value = '', onChange, placeholder = '', style = {}, disabled = false }) => (
-  <label className={styles.label}>
-    {title}
-    <input
-      className={styles.input}
-      placeholder={placeholder}
-      name={name}
-      type={type}
-      value={value}
-      disabled={disabled}
-      style={style}
-      onChange={onChange}
-      autoComplete="off"
-    />
-  </label>
-)
+export const Input = ({ title, ...props }) => {
+  const [field, meta] = useField(props)
+  return (
+    <label className={styles.label}>
+      {title}
+      <input {...field} {...props} className={styles.input} autoComplete="off" />
+      {meta.touched && meta.error ? <p className={styles.error}>{meta.error}</p> : null}
+    </label>
+  )
+}
 
 Input.propTypes = {
   title: PropTypes.string.isRequired,
@@ -27,5 +22,4 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   style: PropTypes.objectOf(PropTypes.string),
   disabled: PropTypes.bool,
-  onChange: PropTypes.func,
 }

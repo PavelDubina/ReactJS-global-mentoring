@@ -37,3 +37,10 @@ button {
   border: 1px solid #f65261;
   color: #f65261;
 }
+
+.disabled {
+  padding: 11px 0;
+  background-color: #55555585;
+  border: 1px solid #fff;
+  cursor: auto;
+}

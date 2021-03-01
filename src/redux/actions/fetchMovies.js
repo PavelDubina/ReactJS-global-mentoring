@@ -19,7 +19,7 @@ const fetchMovies = ({ sortBy = '', filter = '', search = '' }) => async (dispat
   try {
     dispatch(fetchData())
     const response = await fetch(
-      `${BASE_URL}?searchBy=title&sortOrder=desc&limit=120&filter=${filter}&sortBy=${sortBy}&search=${search}`,
+      `${BASE_URL}?searchBy=title&sortOrder=desc&limit=360&filter=${filter}&sortBy=${sortBy}&search=${search}`,
     )
     const movies = await response.json()
     dispatch(fetchDataSuccess({ data: movies.data, sortBy, filter, search }))

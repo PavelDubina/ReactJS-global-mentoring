@@ -6,7 +6,7 @@ import { getReleaseYear, getCorrectGenres } from '../../utils/helpers'
 import { ImageWithFallback } from '../ImageWithFallback/ImageWithFallback'
 import styles from './MovieCard.scss'
 
-export const MovieCard = ({ title, genres, date, poster, id, getMovie, handleMovieDet }) => {
+export const MovieCard = ({ title, genres, date, poster, id, getMovie, handleMovieDetails }) => {
   const [isOpen, setIsOpen] = useState(false)
   const menuStyle = className(styles.menu, { [styles.menu_opened]: isOpen })
   const toggleMenu = () => setIsOpen((state) => !state)
@@ -17,8 +17,8 @@ export const MovieCard = ({ title, genres, date, poster, id, getMovie, handleMov
   return (
     <>
       <div className={styles.container}>
-        <div onClick={() => handleMovieDet(id)} className={styles.poster}>
-          <ImageWithFallback src={poster} />
+        <div className={styles.poster}>
+          <ImageWithFallback onClick={() => handleMovieDetails(id)} src={poster} />
           <div className={menuStyle}>
             <CardMenu isOpen={isOpen} onOpenModal={onOpenModal} toggleMenu={toggleMenu} />
           </div>
@@ -44,5 +44,5 @@ MovieCard.propTypes = {
   poster: PropTypes.string,
   id: PropTypes.number.isRequired,
   getMovie: PropTypes.func.isRequired,
-  handleMovieDet: PropTypes.func.isRequired,
+  handleMovieDetails: PropTypes.func.isRequired,
 }
