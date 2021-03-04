@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: #232323;
+
+  & h1 {
+    font-weight: 400;
+    font-size: 64px;
+    color: #fff;
+  }
+
+  & p {
+    padding: 8px 0 64px;
+    font-size: 256px;
+    line-height: 264px;
+    color: #f65261;
+    text-shadow: 2px 4px 3px #ffffff80;
+  }
+}

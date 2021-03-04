@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Poster from '../../static/images/fallback-image.jpg'
 
-export const ImageWithFallback = ({ src = '', onClick }) => {
+export const ImageWithFallback = ({ src = Poster, onClick }) => {
   const [error, setError] = useState(false)
   const onImageError = () => setError(true)
   const imgSrc = !error ? src : Poster
@@ -11,5 +11,5 @@ export const ImageWithFallback = ({ src = '', onClick }) => {
 
 ImageWithFallback.propTypes = {
   src: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 }
