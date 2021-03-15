@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Modal } from '../Modal/Modal'
-import styles from './SuccessMesage.scss'
+import styles from './SuccessMessage.scss'
 
-export const SuccessMesage = ({ onClose }) => (
+export const SuccessMessage = ({ onClose }) => (
   <Modal onClose={onClose}>
     <div className={styles.container}>
       <div className={styles.img} />
@@ -13,6 +13,6 @@ export const SuccessMesage = ({ onClose }) => (
   </Modal>
 )
 
-SuccessMesage.propTypes = {
+SuccessMessage.propTypes = {
   onClose: PropTypes.func.isRequired,
 }

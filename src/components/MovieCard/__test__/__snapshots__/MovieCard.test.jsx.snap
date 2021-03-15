@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieCard Should renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <div
+      class="poster"
+    >
+      <img
+        alt="poster"
+        height="16"
+        src="test src"
+        width="9"
+      />
+      <div
+        class="menu"
+        data-testid="menu"
+      >
+        <div
+          class="menu"
+          data-testid="card-menu"
+        >
+          <div />
+          <div />
+          <div />
+        </div>
+      </div>
+    </div>
+    <div
+      class="movie__data"
+    >
+      <div
+        class="movie__data_info"
+      >
+        <h2
+          class="movie__data_info_title"
+        >
+          test title
+        </h2>
+        <p
+          class="movie__data_info_genres"
+        >
+          comedy
+        </p>
+      </div>
+      <div
+        class="movie__data_date"
+      >
+        <span>
+          2020
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

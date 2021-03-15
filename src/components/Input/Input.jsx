@@ -8,8 +8,12 @@ export const Input = ({ title, ...props }) => {
   return (
     <label className={styles.label}>
       {title}
-      <input {...field} {...props} className={styles.input} autoComplete="off" />
-      {meta.touched && meta.error ? <p className={styles.error}>{meta.error}</p> : null}
+      <input data-testid={props.name} {...field} {...props} className={styles.input} autoComplete="off" />
+      {meta.touched && meta.error ? (
+        <p data-testid="error" className={styles.error}>
+          {meta.error}
+        </p>
+      ) : null}
     </label>
   )
 }

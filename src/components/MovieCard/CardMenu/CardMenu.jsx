@@ -5,10 +5,10 @@ import styles from './CardMenu.scss'
 
 export const CardMenu = ({ isOpen, toggleMenu, onOpenModal }) => {
   const ref = useRef()
-  useOutsideClick(ref, () => isOpen && toggleMenu())
+  useOutsideClick(ref, isOpen && toggleMenu)
   return (
     <>
-      <div onClick={toggleMenu} className={styles.menu}>
+      <div data-testid="card-menu" onClick={toggleMenu} className={styles.menu}>
         <div />
         <div />
         <div />

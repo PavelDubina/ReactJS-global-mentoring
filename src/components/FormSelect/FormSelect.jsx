@@ -20,7 +20,7 @@ export const FormSelect = ({ name, value, onChange }) => {
           <p className={valueStyle}>{value || 'Select genre'}</p>
           <div className={arrowStyle}>&#9660;</div>
         </div>
-        <div className={dropStyle}>
+        <div data-testid="dropdown" className={dropStyle}>
           {genres.map((genre) => (
             <div key={genre} className={styles.input}>
               <input

@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { Button } from '../Button/Button'
 import { AddForm } from '../AddForm/AddForm'
-import { SuccessMesage } from '../SuccessMasage/SuccessMessage'
+import { SuccessMessage } from '../SuccessMessage/SuccessMessage'
 import styles from './Search.scss'
 
 export const Search = () => {
   const history = useHistory()
   const { query } = useParams()
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState(query)
   const [{ isForm, isMessage }, setIsOpen] = useState({ isForm: false, isMessage: false })
   const handleChange = (event) => setValue(event.target.value)
   const onOpenModal = () => setIsOpen({ isForm: true, isMessage: false })
@@ -21,7 +21,6 @@ export const Search = () => {
     }
     event.preventDefault()
   }
-  useEffect(() => setValue(query), [])
   return (
     <>
       <div className={styles.container}>
@@ -43,7 +42,7 @@ export const Search = () => {
         </form>
       </div>
       {isForm && <AddForm onClose={onCloseModal} />}
-      {isMessage && <SuccessMesage onClose={onCloseModal} />}
+      {isMessage && <SuccessMessage onClose={onCloseModal} />}
     </>
   )
 }

@@ -19,7 +19,7 @@ export const MovieCard = ({ title, genres, date, poster, id, getMovie, handleMov
       <div className={styles.container}>
         <div className={styles.poster}>
           <ImageWithFallback onClick={() => handleMovieDetails(id)} src={poster} />
-          <div className={menuStyle}>
+          <div data-testid="menu" className={menuStyle}>
             <CardMenu isOpen={isOpen} onOpenModal={onOpenModal} toggleMenu={toggleMenu} />
           </div>
         </div>
