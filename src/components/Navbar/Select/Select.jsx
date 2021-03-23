@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import className from 'classnames'
 import { useOutsideClick } from '../../../Hooks/useClickOutside'
 import { sortingValues } from '../../../utils/constants'
-import styles from './Select.scss'
+import styles from '../../../../styles/Select.module.scss'
 
 export const Select = ({ value, toggleSortValue }) => {
   const ref = useRef(null)
@@ -12,13 +12,13 @@ export const Select = ({ value, toggleSortValue }) => {
   const dropdownStyle = className(styles.dropdown, { [styles.visible]: isOpen })
   useOutsideClick(ref, () => isOpen && setIsOpen(false))
   return (
-    <div onClick={() => setIsOpen((state) => !state)} ref={ref} className={selectStyle}>
+    <div data-testid="select" onClick={() => setIsOpen((state) => !state)} ref={ref} className={selectStyle}>
       {value}
-      <div onClick={toggleSortValue} className={dropdownStyle}>
+      <div data-testid="dropdown" onClick={toggleSortValue} className={dropdownStyle}>
         {Object.values(sortingValues).map((val) => {
           const activeStyle = className({ [styles.active]: val === value })
           return (
-            <p className={activeStyle} key={val}>
+            <p data-testid={val} className={activeStyle} key={val}>
               {val}
             </p>
           )

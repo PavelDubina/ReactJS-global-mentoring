@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageWithFallback Should renders correctly with empty src 1`] = `
+<DocumentFragment>
+  <img
+    alt="poster"
+    height="16"
+    src="test-file-stub"
+    width="9"
+  />
+</DocumentFragment>
+`;

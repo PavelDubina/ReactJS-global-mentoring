@@ -4,7 +4,7 @@ import className from 'classnames'
 import { CardMenu } from './CardMenu/CardMenu'
 import { getReleaseYear, getCorrectGenres } from '../../utils/helpers'
 import { ImageWithFallback } from '../ImageWithFallback/ImageWithFallback'
-import styles from './MovieCard.scss'
+import styles from '../../../styles/MovieCard.module.scss'
 
 export const MovieCard = ({ title, genres, date, poster, id, getMovie, handleMovieDetails }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -19,7 +19,7 @@ export const MovieCard = ({ title, genres, date, poster, id, getMovie, handleMov
       <div className={styles.container}>
         <div className={styles.poster}>
           <ImageWithFallback onClick={() => handleMovieDetails(id)} src={poster} />
-          <div className={menuStyle}>
+          <div data-testid="menu" className={menuStyle}>
             <CardMenu isOpen={isOpen} onOpenModal={onOpenModal} toggleMenu={toggleMenu} />
           </div>
         </div>

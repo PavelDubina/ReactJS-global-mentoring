@@ -1,14 +1,14 @@
 import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import { useOutsideClick } from '../../../Hooks/useClickOutside'
-import styles from './CardMenu.scss'
+import styles from '../../../../styles/CardMenu.module.scss'
 
 export const CardMenu = ({ isOpen, toggleMenu, onOpenModal }) => {
   const ref = useRef()
-  useOutsideClick(ref, () => isOpen && toggleMenu())
+  useOutsideClick(ref, isOpen && toggleMenu)
   return (
     <>
-      <div onClick={toggleMenu} className={styles.menu}>
+      <div data-testid="card-menu" onClick={toggleMenu} className={styles.menu}>
         <div />
         <div />
         <div />

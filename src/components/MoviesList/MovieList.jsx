@@ -1,24 +1,22 @@
 import React, { useState, useEffect, useCallback } from 'react'
+import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, useParams } from 'react-router-dom'
 import { MovieCard } from '../MovieCard/MovieCard'
 import { Navbar } from '../Navbar/Navbar'
 import { EditForm } from '../EditForm/EditForm'
 import { DeleteForm } from '../DeleteForm/DeleteForm'
 import { ScrollToTop } from '../ScrollToTop/ScrollToTop'
 import fetchMovies from '../../redux/actions/fetchMovies'
-import { getSortQuery } from '../../utils/helpers'
-import { sortingValues, navGenres } from '../../utils/constants'
 import { Loading } from '../Loading/Loading'
-import styles from './MovieList.scss'
+import styles from '../../../styles/MovieList.module.scss'
 
 export const MovieList = () => {
   const dispatch = useDispatch()
-  const history = useHistory()
-  const { query } = useParams()
-  const [genreValue, setGenreValue] = useState(navGenres.all)
-  const [sortValue, setSortValue] = useState(sortingValues.RELEASE_DATE)
-  const { movies, isLoading } = useSelector((state) => state.moviesData)
+  const router = useRouter()
+  const { query, id } = router.query
+  const { movies, isLoading, error, sortBy, filter } = useSelector((state) => state.moviesData)
+  const [genreValue, setGenreValue] = useState(filter)
+  const [sortValue, setSortValue] = useState(sortBy)
   const [{ isOpen, status, movieData }, setMovie] = useState({
     isOpen: false,
     status: 'delete || edit',
@@ -31,16 +29,18 @@ export const MovieList = () => {
     setMovie({ status, isOpen, movieData: movies.find((movie) => movie.id === id) })
   }
   useEffect(() => {
-    dispatch(
-      fetchMovies({
-        filter: genreValue === navGenres.all ? '' : genreValue,
-        sortBy: getSortQuery(sortValue),
-        search: query,
-      }),
-    )
-  }, [genreValue, sortValue, query])
+    if (router.isReady) {
+      dispatch(
+        fetchMovies({
+          filter: genreValue,
+          sortBy: sortValue,
+          search: query,
+        }),
+      )
+    }
+  }, [genreValue, sortValue, query, id])
   const handleMovieDetails = (id) => {
-    history.push(`/film/${id}`)
+    router.push({ pathname: `/film/[id]`, query: { id } }, undefined, { scroll: false, shallow: true })
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
   return (
@@ -88,7 +88,7 @@ export const MovieList = () => {
           )}
           {status === 'Delete' && isOpen && <DeleteForm id={movieData.id} onClose={onCloseModal} />}
         </div>
-        {!movies.length && <p className={styles.not_found}>Movies not found</p>}
+        {error && <p className={styles.not_found}>Movies not found</p>}
         {isLoading && <Loading />}
       </div>
       <ScrollToTop />

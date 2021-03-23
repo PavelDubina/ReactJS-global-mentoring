@@ -8,7 +8,7 @@ import { FormSelect } from '../FormSelect/FormSelect'
 import { Modal } from '../Modal/Modal'
 import { Input } from '../Input/Input'
 import addMovie from '../../redux/actions/addMovie'
-import styles from './AddForm.scss'
+import styles from '../../../styles/AddForm.module.scss'
 
 export const AddForm = ({ onClose }) => {
   const dispatch = useDispatch()

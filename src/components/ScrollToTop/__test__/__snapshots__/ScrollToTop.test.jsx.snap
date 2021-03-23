@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScrollToTop Should renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="scroll_to_top"
+  />
+</DocumentFragment>
+`;

@@ -5,7 +5,7 @@ const fetchData = () => ({
   type: SEARCH_MOVIE_PENDING,
 })
 
-const fetchDataSuccess = (payload) => ({
+export const fetchMovieDataSuccess = (payload) => ({
   type: SEARCH_MOVIE_SUCCESS,
   payload,
 })
@@ -20,7 +20,7 @@ const fetchMovie = (id) => async (dispatch) => {
     dispatch(fetchData())
     const response = await fetch(`${BASE_URL}/${id}`)
     const movie = await response.json()
-    dispatch(fetchDataSuccess(movie))
+    dispatch(fetchMovieDataSuccess(movie))
   } catch (error) {
     dispatch(fetchDataError(error))
   }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import className from 'classnames'
 import { useOutsideClick } from '../../Hooks/useClickOutside'
 import { genres } from '../../utils/constants'
-import styles from './FormSelect.scss'
+import styles from '../../../styles/FormSelect.module.scss'
 
 export const FormSelect = ({ name, value, onChange }) => {
   const ref = useRef()
@@ -20,7 +20,7 @@ export const FormSelect = ({ name, value, onChange }) => {
           <p className={valueStyle}>{value || 'Select genre'}</p>
           <div className={arrowStyle}>&#9660;</div>
         </div>
-        <div className={dropStyle}>
+        <div data-testid="dropdown" className={dropStyle}>
           {genres.map((genre) => (
             <div key={genre} className={styles.input}>
               <input

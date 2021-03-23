@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Button } from '../Button/Button'
 import { Modal } from '../Modal/Modal'
 import deleteMovie from '../../redux/actions/deleteMovie'
-import styles from './DeleteForm.scss'
+import styles from '../../../styles/DeleteForm.module.scss'
 
 export const DeleteForm = ({ id, onClose }) => {
   const dispatch = useDispatch()
@@ -13,12 +13,14 @@ export const DeleteForm = ({ id, onClose }) => {
     onClose()
   }
   return (
-    <Modal title="DELETE FORM" onClose={onClose}>
+    <Modal title="DELETE MOVIE" onClose={onClose}>
       <div className={styles.container}>
         <p>Are you sure you want delete this movie?</p>
-        <Button onClick={onDelete} styleType="confirm">
-          CONFIRM
-        </Button>
+        <div className={styles.confirm_btn}>
+          <Button onClick={onDelete} styleType="confirm">
+            CONFIRM
+          </Button>
+        </div>
       </div>
     </Modal>
   )

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory, useParams } from 'react-router-dom'
+import { useRouter } from 'next/router'
 import { Button } from '../Button/Button'
 import { AddForm } from '../AddForm/AddForm'
-import { SuccessMesage } from '../SuccessMasage/SuccessMessage'
-import styles from './Search.scss'
+import { SuccessMessage } from '../SuccessMessage/SuccessMessage'
+import styles from '../../../styles/Search.module.scss'
 
 export const Search = () => {
-  const history = useHistory()
-  const { query } = useParams()
+  const router = useRouter()
+  const { query } = router.query
   const [value, setValue] = useState('')
   const [{ isForm, isMessage }, setIsOpen] = useState({ isForm: false, isMessage: false })
   const handleChange = (event) => setValue(event.target.value)
@@ -15,19 +15,23 @@ export const Search = () => {
   const onCloseModal = (isMessage) => setIsOpen({ isForm: false, isMessage })
   const onSubmit = (event) => {
     if (value) {
-      history.push(`/search/${value}`)
+      router.push(`/search/${value}`)
     } else {
-      history.push(`/`)
+      router.push(`/`)
     }
     event.preventDefault()
   }
-  useEffect(() => setValue(query), [])
+  useEffect(() => {
+    if (router.isReady) setValue(query || '')
+  }, [query])
   return (
     <>
       <div className={styles.container}>
-        <Button onClick={onOpenModal} styleType="adding">
-          + ADD MOVIE
-        </Button>
+        <div className={styles.add_btn}>
+          <Button onClick={onOpenModal} styleType="adding">
+            + ADD MOVIE
+          </Button>
+        </div>
         <h1 className={styles.title}>FIND YOUR MOVIE</h1>
         <form onSubmit={onSubmit} className={styles.form}>
           <input
@@ -37,13 +41,15 @@ export const Search = () => {
             value={value}
             placeholder="What do you want to watch?"
           />
-          <Button type="submit" styleType="search">
-            SEARCH
-          </Button>
+          <div className={styles.search_btn}>
+            <Button type="submit" styleType="search">
+              SEARCH
+            </Button>
+          </div>
         </form>
       </div>
       {isForm && <AddForm onClose={onCloseModal} />}
-      {isMessage && <SuccessMesage onClose={onCloseModal} />}
+      {isMessage && <SuccessMessage onClose={onCloseModal} />}
     </>
   )
 }

@@ -1,15 +1,19 @@
 import React from 'react'
 import { useField } from 'formik'
 import PropTypes from 'prop-types'
-import styles from './Input.scss'
+import styles from '../../../styles/Input.module.scss'
 
 export const Input = ({ title, ...props }) => {
   const [field, meta] = useField(props)
   return (
     <label className={styles.label}>
       {title}
-      <input {...field} {...props} className={styles.input} autoComplete="off" />
-      {meta.touched && meta.error ? <p className={styles.error}>{meta.error}</p> : null}
+      <input data-testid={props.name} {...field} {...props} className={styles.input} autoComplete="off" />
+      {meta.touched && meta.error ? (
+        <p data-testid="error" className={styles.error}>
+          {meta.error}
+        </p>
+      ) : null}
     </label>
   )
 }

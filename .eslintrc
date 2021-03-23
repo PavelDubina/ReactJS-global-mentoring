@@ -30,5 +30,7 @@
     "camelcase": ["off"],
     "react/jsx-props-no-spreading": 0,
     "jsx-a11y/no-noninteractive-element-interactions": 0,
+    "import/no-mutable-exports": 0,
+    "no-underscore-dangle": 0
   }
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import className from 'classnames'
 import { Select } from './Select/Select'
 import { navGenres } from '../../utils/constants'
-import styles from './Navbar.scss'
+import styles from '../../../styles/Navbar.module.scss'
 
 export const Navbar = ({ genreValue, sortValue, toggleSortValue, handleMenu }) => (
   <nav className={styles.container}>

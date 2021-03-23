@@ -8,7 +8,7 @@ import { FormSelect } from '../FormSelect/FormSelect'
 import { Modal } from '../Modal/Modal'
 import { Input } from '../Input/Input'
 import editMovie from '../../redux/actions/editMovie'
-import styles from './EditForm.scss'
+import styles from '../../../styles/EditForm.module.scss'
 
 export const EditForm = ({ onClose, ...props }) => {
   const dispatch = useDispatch()
@@ -92,7 +92,7 @@ EditForm.propTypes = {
   runtime: PropTypes.number,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   poster_path: PropTypes.string,
-  vote_average: PropTypes.string,
-  vote_count: PropTypes.string,
+  vote_average: PropTypes.number,
+  vote_count: PropTypes.number,
   onClose: PropTypes.func.isRequired,
 }

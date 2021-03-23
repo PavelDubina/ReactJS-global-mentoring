@@ -1,14 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useRouter } from 'next/router'
 import { Button } from '../Button/Button'
-import styles from './PageNotFound.scss'
+import styles from '../../../styles/PageNotFound.module.scss'
 
-export const PageNotFound = () => (
-  <div className={styles.container}>
-    <h1>Page Not Found</h1>
-    <p>404</p>
-    <Link to="/">
-      <Button styleType="back_home">GO BACK TO HOME</Button>
-    </Link>
-  </div>
-)
+export const PageNotFound = () => {
+  const router = useRouter()
+  const goHome = () => router.push('/')
+  return (
+    <div className={styles.container}>
+      <h1>Page Not Found</h1>
+      <p>404</p>
+      <Button onClick={goHome} styleType="back_home">
+        GO BACK TO HOME
+      </Button>
+    </div>
+  )
+}

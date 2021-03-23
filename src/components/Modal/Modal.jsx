@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { useOutsideClick } from '../../Hooks/useClickOutside'
-import styles from './Modal.scss'
+import styles from '../../../styles/Modal.module.scss'
 
 export const Modal = ({ title = '', onClose, children }) => {
   const ref = useRef()
