@@ -18,7 +18,7 @@ export const MovieDetails = () => {
   useEffect(() => dispatch(fetchMovie(id)), [id])
   return (
     <div className={styles.container}>
-      <ImageWithFallback src={movie.poster_path} />
+      <ImageWithFallback src={movie.poster_path} id={id} />
       {movie.id ? (
         <div className={styles.info}>
           <div className={styles.name_and_rating}>

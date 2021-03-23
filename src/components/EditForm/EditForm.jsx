@@ -92,7 +92,7 @@ EditForm.propTypes = {
   runtime: PropTypes.number,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   poster_path: PropTypes.string,
-  vote_average: PropTypes.string,
-  vote_count: PropTypes.string,
+  vote_average: PropTypes.number,
+  vote_count: PropTypes.number,
   onClose: PropTypes.func.isRequired,
 }

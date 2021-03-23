@@ -7,8 +7,6 @@ import { EditForm } from '../EditForm/EditForm'
 import { DeleteForm } from '../DeleteForm/DeleteForm'
 import { ScrollToTop } from '../ScrollToTop/ScrollToTop'
 import fetchMovies from '../../redux/actions/fetchMovies'
-import { getSortQuery } from '../../utils/helpers'
-import { sortingValues, navGenres } from '../../utils/constants'
 import { Loading } from '../Loading/Loading'
 import styles from './MovieList.scss'
 
@@ -16,9 +14,9 @@ export const MovieList = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const { query } = useParams()
-  const [genreValue, setGenreValue] = useState(navGenres.all)
-  const [sortValue, setSortValue] = useState(sortingValues.RELEASE_DATE)
-  const { movies, isLoading } = useSelector((state) => state.moviesData)
+  const { movies, isLoading, error, sortBy, filter } = useSelector((state) => state.moviesData)
+  const [genreValue, setGenreValue] = useState(filter)
+  const [sortValue, setSortValue] = useState(sortBy)
   const [{ isOpen, status, movieData }, setMovie] = useState({
     isOpen: false,
     status: 'delete || edit',
@@ -33,8 +31,8 @@ export const MovieList = () => {
   useEffect(() => {
     dispatch(
       fetchMovies({
-        filter: genreValue === navGenres.all ? '' : genreValue,
-        sortBy: getSortQuery(sortValue),
+        filter: genreValue,
+        sortBy: sortValue,
         search: query,
       }),
     )
@@ -88,7 +86,7 @@ export const MovieList = () => {
           )}
           {status === 'Delete' && isOpen && <DeleteForm id={movieData.id} onClose={onCloseModal} />}
         </div>
-        {!movies.length && <p className={styles.not_found}>Movies not found</p>}
+        {error && <p className={styles.not_found}>Movies not found</p>}
         {isLoading && <Loading />}
       </div>
       <ScrollToTop />

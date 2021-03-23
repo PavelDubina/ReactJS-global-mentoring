@@ -18,11 +18,12 @@ export const ScrollToTop = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', toggleVisibility)
-  }, [])
+    return () => window.removeEventListener('scroll', toggleVisibility)
+  })
 
   return (
     <div className={styles.scroll_to_top}>
-      {isVisible && <FontAwesomeIcon icon={faArrowAltCircleUp} onClick={scrollToTop} />}
+      {isVisible && <FontAwesomeIcon data-testid="icon" icon={faArrowAltCircleUp} onClick={scrollToTop} />}
     </div>
   )
 }

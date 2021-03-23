@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select Should renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="select"
+    data-testid="select"
+  >
+    RELEASE DATE
+    <div
+      class="dropdown"
+      data-testid="dropdown"
+    >
+      <p
+        class="active"
+        data-testid="RELEASE DATE"
+      >
+        RELEASE DATE
+      </p>
+      <p
+        class=""
+        data-testid="RATING"
+      >
+        RATING
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
