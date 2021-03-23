@@ -1,7 +1,8 @@
 .container {
   position: relative;
-  padding: 60px 0 60px 56px;
+  padding: 48px 0 0 56px;
   display: flex;
+  height: 424px;
   width: 100%;
 }
 
@@ -58,6 +59,7 @@ img {
 .overview {
   padding: 0 64px 0 0;
   font-size: 20px;
+  overflow-y: auto;
 }
 
 .search_icon {
@@ -68,4 +70,12 @@ img {
   font-size: 24px;
   transform: rotate(90deg);
   cursor: pointer;
+}
+
+.not_found {
+  flex: 1;
+  text-align: center;
+  align-self: center;
+  font-size: 64px;
+  color: #fff;
 }

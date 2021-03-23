@@ -1,23 +1,12 @@
 import React from 'react'
 import { hot } from 'react-hot-loader'
-import { MovieList } from './components/MoviesList/MovieList'
 import { Footer } from './components/Footer/Footer'
-import { Header } from './components/Header/Header'
-import { ErrorBoundary } from './components/ErrorBoundary/ErrorBoundary'
-// eslint-disable-next-line no-unused-vars
-import { MovieDetails } from './components/MovieDetails/MovieDetails'
-import { Search } from './components/Search/Search'
+import { Routes } from './Routes'
 import styles from './App.scss'
 
 const App = () => (
   <div className={styles.main_container}>
-    <Header>
-      {/* <MovieDetails /> */}
-      <Search />
-    </Header>
-    <ErrorBoundary>
-      <MovieList />
-    </ErrorBoundary>
+    <Routes />
     <Footer />
   </div>
 )

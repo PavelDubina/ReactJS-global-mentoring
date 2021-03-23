@@ -1,23 +1,27 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useHistory, useParams } from 'react-router-dom'
 import { Button } from '../Button/Button'
 import { AddForm } from '../AddForm/AddForm'
 import { SuccessMesage } from '../SuccessMasage/SuccessMessage'
-import fetchMovies from '../../redux/actions/fetchMovies'
 import styles from './Search.scss'
 
 export const Search = () => {
-  const dispatch = useDispatch()
+  const history = useHistory()
+  const { query } = useParams()
   const [value, setValue] = useState('')
   const [{ isForm, isMessage }, setIsOpen] = useState({ isForm: false, isMessage: false })
-  const { sortBy, filter } = useSelector((state) => state.moviesData)
   const handleChange = (event) => setValue(event.target.value)
   const onOpenModal = () => setIsOpen({ isForm: true, isMessage: false })
   const onCloseModal = (isMessage) => setIsOpen({ isForm: false, isMessage })
   const onSubmit = (event) => {
-    dispatch(fetchMovies({ sortBy, filter, search: value }))
+    if (value) {
+      history.push(`/search/${value}`)
+    } else {
+      history.push(`/`)
+    }
     event.preventDefault()
   }
+  useEffect(() => setValue(query), [])
   return (
     <>
       <div className={styles.container}>

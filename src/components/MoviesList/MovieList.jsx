@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory, useParams } from 'react-router-dom'
 import { MovieCard } from '../MovieCard/MovieCard'
 import { Navbar } from '../Navbar/Navbar'
 import { EditForm } from '../EditForm/EditForm'
 import { DeleteForm } from '../DeleteForm/DeleteForm'
 import { ScrollToTop } from '../ScrollToTop/ScrollToTop'
 import fetchMovies from '../../redux/actions/fetchMovies'
-import fetchMovie from '../../redux/actions/fetchMovie'
 import { getSortQuery } from '../../utils/helpers'
 import { sortingValues, navGenres } from '../../utils/constants'
 import { Loading } from '../Loading/Loading'
@@ -14,9 +14,11 @@ import styles from './MovieList.scss'
 
 export const MovieList = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
+  const { query } = useParams()
   const [genreValue, setGenreValue] = useState(navGenres.all)
   const [sortValue, setSortValue] = useState(sortingValues.RELEASE_DATE)
-  const { movies, search, isLoading } = useSelector((state) => state.moviesData)
+  const { movies, isLoading } = useSelector((state) => state.moviesData)
   const [{ isOpen, status, movieData }, setMovie] = useState({
     isOpen: false,
     status: 'delete || edit',
@@ -30,10 +32,17 @@ export const MovieList = () => {
   }
   useEffect(() => {
     dispatch(
-      fetchMovies({ filter: genreValue === navGenres.all ? '' : genreValue, sortBy: getSortQuery(sortValue), search }),
+      fetchMovies({
+        filter: genreValue === navGenres.all ? '' : genreValue,
+        sortBy: getSortQuery(sortValue),
+        search: query,
+      }),
     )
-  }, [genreValue, sortValue])
-  const handleMovieDetails = (id) => dispatch(fetchMovie(id))
+  }, [genreValue, sortValue, query])
+  const handleMovieDetails = (id) => {
+    history.push(`/film/${id}`)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
   return (
     <div className={styles.container}>
       <div className={styles.section}>
