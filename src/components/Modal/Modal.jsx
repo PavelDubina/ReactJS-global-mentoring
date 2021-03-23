@@ -1,17 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import { useOutsideClick } from '../../Hooks/useClickOutside'
 import styles from './Modal.scss'
 
-export const Modal = ({ title, onClose, children }) => {
+export const Modal = ({ title = '', onClose, children }) => {
+  const ref = useRef()
+  useOutsideClick(ref, onClose)
   useEffect(() => {
     document.body.style.overflow = 'hidden'
     return () => (document.body.style.overflow = 'unset')
   })
   return ReactDOM.createPortal(
-    <div onClick={onClose} data-close className={styles.modal_backdrop}>
-      <div className={styles.modal_window}>
-        <div data-close className={styles.close_btn}>
+    <div className={styles.modal_backdrop}>
+      <div ref={ref} className={styles.modal_window}>
+        <div onClick={() => onClose()} className={styles.close_btn}>
           &#215;
         </div>
         <h1 className={styles.title}>{title}</h1>
@@ -23,7 +26,7 @@ export const Modal = ({ title, onClose, children }) => {
 }
 
 Modal.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   onClose: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 }

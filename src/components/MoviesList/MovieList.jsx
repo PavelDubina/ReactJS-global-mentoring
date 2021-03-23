@@ -9,13 +9,14 @@ import fetchMovies from '../../redux/actions/fetchMovies'
 import fetchMovie from '../../redux/actions/fetchMovie'
 import { getSortQuery } from '../../utils/helpers'
 import { sortingValues, navGenres } from '../../utils/constants'
+import { Loading } from '../Loading/Loading'
 import styles from './MovieList.scss'
 
 export const MovieList = () => {
   const dispatch = useDispatch()
   const [genreValue, setGenreValue] = useState(navGenres.all)
   const [sortValue, setSortValue] = useState(sortingValues.RELEASE_DATE)
-  const { movies, search } = useSelector((state) => state.moviesData)
+  const { movies, search, isLoading } = useSelector((state) => state.moviesData)
   const [{ isOpen, status, movieData }, setMovie] = useState({
     isOpen: false,
     status: 'delete || edit',
@@ -23,10 +24,7 @@ export const MovieList = () => {
   })
   const toggleSortValue = (event) => setSortValue(event.target.textContent)
   const handleMenu = (genre) => setGenreValue(genre)
-  const onCloseModal = useCallback(
-    (event) => event.target.dataset.close && setMovie((state) => ({ ...state, isOpen: false })),
-    [isOpen],
-  )
+  const onCloseModal = useCallback(() => setMovie((state) => ({ ...state, isOpen: false })), [isOpen])
   const getMovie = (id, status, isOpen) => {
     setMovie({ status, isOpen, movieData: movies.find((movie) => movie.id === id) })
   }
@@ -35,7 +33,7 @@ export const MovieList = () => {
       fetchMovies({ filter: genreValue === navGenres.all ? '' : genreValue, sortBy: getSortQuery(sortValue), search }),
     )
   }, [genreValue, sortValue])
-  const handleMovieDet = (id) => dispatch(fetchMovie(id))
+  const handleMovieDetails = (id) => dispatch(fetchMovie(id))
   return (
     <div className={styles.container}>
       <div className={styles.section}>
@@ -62,23 +60,27 @@ export const MovieList = () => {
               id={movie.id}
               key={movie.id}
               getMovie={getMovie}
-              handleMovieDet={handleMovieDet}
+              handleMovieDetails={handleMovieDetails}
             />
           ))}
           {status === 'Edit' && isOpen && (
             <EditForm
               onClose={onCloseModal}
-              genres={movieData.genres.map((genre) => genre.toLowerCase())}
+              genres={movieData.genres}
               title={movieData.title}
               id={movieData.id}
               release_date={movieData.release_date}
               overview={movieData.overview}
               runtime={movieData.runtime}
               poster_path={movieData.poster_path}
+              vote_average={movieData.vote_average}
+              vote_count={movieData.vote_count}
             />
           )}
           {status === 'Delete' && isOpen && <DeleteForm id={movieData.id} onClose={onCloseModal} />}
         </div>
+        {!movies.length && <p className={styles.not_found}>Movies not found</p>}
+        {isLoading && <Loading />}
       </div>
       <ScrollToTop />
     </div>

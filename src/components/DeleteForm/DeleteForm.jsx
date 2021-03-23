@@ -8,12 +8,15 @@ import styles from './DeleteForm.scss'
 
 export const DeleteForm = ({ id, onClose }) => {
   const dispatch = useDispatch()
-  const onDelete = () => dispatch(deleteMovie(id))
+  const onDelete = () => {
+    dispatch(deleteMovie(id))
+    onClose()
+  }
   return (
     <Modal title="DELETE FORM" onClose={onClose}>
       <div className={styles.container}>
         <p>Are you sure you want delete this movie?</p>
-        <Button isClose onClick={onDelete} styleType="confirm">
+        <Button onClick={onDelete} styleType="confirm">
           CONFIRM
         </Button>
       </div>

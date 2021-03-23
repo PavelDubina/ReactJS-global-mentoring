@@ -5,6 +5,8 @@
 }
 
 .section {
+  display: flex;
+  flex-direction: column;
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -24,4 +26,10 @@
     font-weight: 700;
     margin: 0 5px 0 0;
   }
+}
+
+.not_found {
+  font-size: 56px;
+  align-self: center;
+  color: #ffffffc2;
 }

@@ -2,20 +2,21 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button } from '../Button/Button'
 import { AddForm } from '../AddForm/AddForm'
+import { SuccessMesage } from '../SuccessMasage/SuccessMessage'
 import fetchMovies from '../../redux/actions/fetchMovies'
 import styles from './Search.scss'
 
 export const Search = () => {
   const dispatch = useDispatch()
   const [value, setValue] = useState('')
-  const [isOpen, setIsOpen] = useState(false)
+  const [{ isForm, isMessage }, setIsOpen] = useState({ isForm: false, isMessage: false })
   const { sortBy, filter } = useSelector((state) => state.moviesData)
   const handleChange = (event) => setValue(event.target.value)
-  const onOpenModal = () => setIsOpen(true)
-  const onCloseModal = (event) => event.target.dataset.close && setIsOpen(false)
+  const onOpenModal = () => setIsOpen({ isForm: true, isMessage: false })
+  const onCloseModal = (isMessage) => setIsOpen({ isForm: false, isMessage })
   const onSubmit = (event) => {
-    event.preventDefault()
     dispatch(fetchMovies({ sortBy, filter, search: value }))
+    event.preventDefault()
   }
   return (
     <>
@@ -37,7 +38,8 @@ export const Search = () => {
           </Button>
         </form>
       </div>
-      {isOpen && <AddForm onClose={onCloseModal} />}
+      {isForm && <AddForm onClose={onCloseModal} />}
+      {isMessage && <SuccessMesage onClose={onCloseModal} />}
     </>
   )
 }
