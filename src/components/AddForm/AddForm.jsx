@@ -1,91 +1,88 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Button } from '../Button/Button'
 import { FormSelect } from '../FormSelect/FormSelect'
 import { Modal } from '../Modal/Modal'
+import { Input } from '../Input/Input'
+import addMovie from '../../redux/actions/addMovie'
 import styles from './AddForm.scss'
 
 export const AddForm = ({ onClose }) => {
-  const [state, setState] = useState({
+  const dispatch = useDispatch()
+  const initialState = {
     title: '',
-    release: '',
+    release_date: '',
     overview: '',
     runtime: '',
     genres: [],
-  })
-  const { title, release, overview, runtime, genres } = state
-  const handleInputChange = (event) => {
-    const { value, name, type, checked } = event.target
-    if (type !== 'checkbox') {
-      setState({ ...state, [name]: value })
-    } else if (checked) {
-      if (genres.includes(value)) return
-      setState((state) => ({ ...state, genres: [...state.genres, value] }))
-    } else {
-      setState((state) => ({ ...state, genres: state.genres.filter((genre) => genre !== value) }))
-    }
+    poster_path: '',
   }
+  const [state, setState] = useState(initialState)
+  const { title, release_date, overview, runtime, genres, poster_path } = state
+  const handleInput = (event) => {
+    const { value, name } = event.target
+    setState({ ...state, [name]: name === 'runtime' ? parseInt(value, 10) : value })
+  }
+  const handleGenre = (event) => {
+    const { value, checked } = event.target
+    return checked && !genres.includes(value)
+      ? setState((state) => ({ ...state, genres: [...state.genres, value] }))
+      : setState((state) => ({ ...state, genres: state.genres.filter((genre) => genre !== value) }))
+  }
+  const handleReset = () => setState(initialState)
+  const onSubmit = () => dispatch(addMovie(state))
   return (
     <Modal title="ADD MOVIE" onClose={onClose}>
       <form className={styles.form}>
-        <label className={styles.label}>
-          TITLE
-          <input
-            className={styles.input}
-            name="title"
-            type="text"
-            value={title}
-            placeholder="Title here"
-            onChange={handleInputChange}
-          />
-        </label>
+        <Input title="TITLE" name="title" type="text" value={title} placeholder="Title here" onChange={handleInput} />
         <br />
-        <label className={styles.label}>
-          RELEASE DATE
-          <input
-            className={styles.input}
-            name="release"
-            type="date"
-            value={release}
-            style={{ color: release ? '#fff' : '' }}
-            onChange={handleInputChange}
-          />
-        </label>
+        <Input
+          title="RELEASE DATE"
+          name="release_date"
+          type="date"
+          value={release_date}
+          style={{ color: release_date ? '#fff' : '#a9a9a9c0' }}
+          onChange={handleInput}
+        />
         <br />
-        <FormSelect value={genres.join(', ')} onChange={handleInputChange} />
+        <Input
+          title="POSTER PATH"
+          name="poster_path"
+          type="text"
+          value={poster_path}
+          placeholder="Poster URL here"
+          onChange={handleInput}
+        />
         <br />
-        <label className={styles.label}>
-          OVERVIEW
-          <input
-            className={styles.input}
-            name="overview"
-            type="text"
-            value={overview}
-            placeholder="Overview here"
-            onChange={handleInputChange}
-          />
-        </label>
+        <FormSelect value={genres.join(', ')} onChange={handleGenre} />
         <br />
-        <label className={styles.label}>
-          RUNTIME
-          <input
-            className={styles.input}
-            name="runtime"
-            type="text"
-            value={runtime}
-            placeholder="Runtime here"
-            onChange={handleInputChange}
-          />
-        </label>
-        <div className={styles.btns}>
-          <Button type="reset" styleType="reset">
-            RESET
-          </Button>
-          <Button type="submit" styleType="confirm">
-            SUBMIT
-          </Button>
-        </div>
+        <Input
+          title="OVERVIEW"
+          name="overview"
+          type="text"
+          value={overview}
+          placeholder="Overview here"
+          onChange={handleInput}
+        />
+        <br />
+        <Input
+          title="RUNTIME"
+          name="runtime"
+          type="text"
+          value={runtime}
+          placeholder="Runtime here"
+          onChange={handleInput}
+        />
       </form>
+      <div className={styles.btns}>
+        <Button onClick={handleReset} styleType="reset">
+          RESET
+        </Button>
+        <Button isClose onClick={onSubmit} styleType="confirm">
+          SUBMIT
+        </Button>
+      </div>
     </Modal>
   )
 }

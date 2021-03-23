@@ -6,7 +6,7 @@
 }
 
 img {
-  width: 270px;
+  width: 240px;
   height: 340px;
 }
 
@@ -23,13 +23,17 @@ img {
 }
 
 .name {
-  font-size: 62px;
+  font-size: 44px;
   font-weight: normal;
 }
 
 .rating {
   margin: 0 0 0 16px;
-  padding: 12px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid #fff;
   border-radius: 50%;
   font-size: 28px;
@@ -41,10 +45,14 @@ img {
   display: flex;
   font-size: 28px;
   color: #f65261;
+}
 
-  & p {
-    margin: 0 32px 0 0;
-  }
+.runtime {
+  margin: 0 0 0 32px;
+}
+
+.noneVisible {
+  display: none;
 }
 
 .overview {

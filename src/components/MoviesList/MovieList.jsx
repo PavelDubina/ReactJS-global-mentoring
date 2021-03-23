@@ -1,38 +1,56 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { MovieCard } from '../MovieCard/MovieCard'
 import { Navbar } from '../Navbar/Navbar'
 import { EditForm } from '../EditForm/EditForm'
 import { DeleteForm } from '../DeleteForm/DeleteForm'
-import movies from '../../mock_response.json'
+import { ScrollToTop } from '../ScrollToTop/ScrollToTop'
+import fetchMovies from '../../redux/actions/fetchMovies'
+import fetchMovie from '../../redux/actions/fetchMovie'
+import { getSortQuery } from '../../utils/helpers'
+import { sortingValues, navGenres } from '../../utils/constants'
 import styles from './MovieList.scss'
 
 export const MovieList = () => {
+  const dispatch = useDispatch()
+  const [genreValue, setGenreValue] = useState(navGenres.all)
+  const [sortValue, setSortValue] = useState(sortingValues.RELEASE_DATE)
+  const { movies, search } = useSelector((state) => state.moviesData)
   const [{ isOpen, status, movieData }, setMovie] = useState({
     isOpen: false,
     status: 'delete || edit',
     movieData: {},
   })
+  const toggleSortValue = (event) => setSortValue(event.target.textContent)
+  const handleMenu = (genre) => setGenreValue(genre)
   const onCloseModal = useCallback(
-    (event) => {
-      if (event.target.dataset.close) {
-        setMovie((state) => ({ ...state, isOpen: false }))
-      }
-    },
+    (event) => event.target.dataset.close && setMovie((state) => ({ ...state, isOpen: false })),
     [isOpen],
   )
   const getMovie = (id, status, isOpen) => {
-    setMovie({ status, isOpen, movieData: movies.data.find((movie) => movie.id === id) })
+    setMovie({ status, isOpen, movieData: movies.find((movie) => movie.id === id) })
   }
+  useEffect(() => {
+    dispatch(
+      fetchMovies({ filter: genreValue === navGenres.all ? '' : genreValue, sortBy: getSortQuery(sortValue), search }),
+    )
+  }, [genreValue, sortValue])
+  const handleMovieDet = (id) => dispatch(fetchMovie(id))
   return (
     <div className={styles.container}>
       <div className={styles.section}>
-        <Navbar />
+        <Navbar
+          toggleSortValue={toggleSortValue}
+          handleMenu={handleMenu}
+          genreValue={genreValue}
+          sortValue={sortValue}
+        />
         <div className={styles.result__count}>
-          <span className={styles.result__count_number}>{movies.data.length}</span>
+          <span className={styles.result__count_number}>{movies.length}</span>
           <span>movies found</span>
         </div>
         <div className={styles.list}>
-          {movies.data.map((movie) => (
+          {movies.map((movie) => (
             <MovieCard
               poster={movie.poster_path}
               genres={movie.genres}
@@ -44,6 +62,7 @@ export const MovieList = () => {
               id={movie.id}
               key={movie.id}
               getMovie={getMovie}
+              handleMovieDet={handleMovieDet}
             />
           ))}
           {status === 'Edit' && isOpen && (
@@ -52,14 +71,16 @@ export const MovieList = () => {
               genres={movieData.genres.map((genre) => genre.toLowerCase())}
               title={movieData.title}
               id={movieData.id}
-              release={movieData.release_date}
+              release_date={movieData.release_date}
               overview={movieData.overview}
               runtime={movieData.runtime}
+              poster_path={movieData.poster_path}
             />
           )}
-          {status === 'Delete' && isOpen && <DeleteForm onClose={onCloseModal} />}
+          {status === 'Delete' && isOpen && <DeleteForm id={movieData.id} onClose={onCloseModal} />}
         </div>
       </div>
+      <ScrollToTop />
     </div>
   )
 }
