@@ -1,6 +1,4 @@
 import React from 'react'
-import { createMemoryHistory } from 'history'
-import { Router } from 'react-router-dom'
 import configureStore from 'redux-mock-store'
 import { render } from '@testing-library/react'
 import { Provider } from 'react-redux'
@@ -9,19 +7,16 @@ import { MovieDetails } from '../MovieDetails'
 
 const mockStore = configureStore([])
 
+jest.mock('next/router', () => ({ useRouter: jest.fn().mockReturnValue({ query: { id: '3133369' } }) }))
+
 describe('MovieDetails', () => {
-  const history = createMemoryHistory()
-  const route = '/film/313369'
-  history.push(route)
   it('Should renders correctly if movie found', () => {
     const store = mockStore({ movieData: { movie } })
     store.dispatch = jest.fn()
     const getComponent = () =>
       render(
         <Provider store={store}>
-          <Router history={history}>
-            <MovieDetails />
-          </Router>
+          <MovieDetails />
         </Provider>,
       )
     expect(getComponent({}).asFragment()).toMatchSnapshot()
@@ -33,9 +28,7 @@ describe('MovieDetails', () => {
     const getComponent = () =>
       render(
         <Provider store={store}>
-          <Router history={history}>
-            <MovieDetails />
-          </Router>
+          <MovieDetails />
         </Provider>,
       )
     expect(getComponent({}).asFragment()).toMatchSnapshot()

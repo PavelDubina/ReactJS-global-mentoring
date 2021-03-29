@@ -1,19 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createMemoryHistory } from 'history'
+import { useRouter } from 'next/router'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
-import { Router } from 'react-router-dom'
 import { render, fireEvent } from '@testing-library/react'
 import movies from '../../../MockedData/mockMovies.json'
 import { MovieList } from '../MovieList'
 
 const mockStore = configureStore([])
-
+jest.mock('next/router', () => ({
+  useRouter: jest.fn().mockReturnValue({ push: jest.fn(), query: { id: '3133369', query: '' } }),
+}))
 describe('MovieList', () => {
   ReactDOM.createPortal = jest.fn((element) => element)
-  const history = createMemoryHistory()
-  history.push('/')
   const store = mockStore({
     moviesData: { movies, error: false, isLoading: false, sortBy: 'RELEASE DATE', filter: 'all' },
   })
@@ -21,9 +20,7 @@ describe('MovieList', () => {
   const getComponent = () =>
     render(
       <Provider store={store}>
-        <Router history={history}>
-          <MovieList />
-        </Router>
+        <MovieList />
       </Provider>,
     )
   it('Should renders correctly', () => {
@@ -37,9 +34,7 @@ describe('MovieList', () => {
     const getComponent = () =>
       render(
         <Provider store={store}>
-          <Router history={history}>
-            <MovieList />
-          </Router>
+          <MovieList />
         </Provider>,
       )
     expect(getComponent().asFragment()).toMatchSnapshot()
@@ -52,9 +47,7 @@ describe('MovieList', () => {
     const getComponent = () =>
       render(
         <Provider store={store}>
-          <Router history={history}>
-            <MovieList />
-          </Router>
+          <MovieList />
         </Provider>,
       )
     const { getByText } = getComponent()
@@ -64,7 +57,7 @@ describe('MovieList', () => {
     window.scrollTo = jest.fn()
     const { getByAltText } = getComponent()
     fireEvent.click(getByAltText('poster'))
-    expect(history.location.pathname).toBe(`/film/${movies[0].id}`)
+    expect(useRouter().push).toBeCalled()
   })
   it('Should call toggleSortValue', () => {
     const { getByTestId } = getComponent()

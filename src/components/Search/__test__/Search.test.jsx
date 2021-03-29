@@ -1,26 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createMemoryHistory } from 'history'
+import { useRouter } from 'next/router'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
-import { Router } from 'react-router-dom'
 import { render, fireEvent } from '@testing-library/react'
 import { Search } from '../Search'
 
 const mockStore = configureStore([])
+jest.mock('next/router', () => ({
+  useRouter: jest.fn().mockReturnValue({ push: jest.fn(), query: { query: '' } }),
+}))
 
 describe('Search', () => {
   ReactDOM.createPortal = jest.fn((element) => element)
-  const history = createMemoryHistory()
-  const route = '/'
-  history.push(route)
   const store = mockStore({})
   const getComponent = () =>
     render(
       <Provider store={store}>
-        <Router history={history}>
-          <Search />
-        </Router>
+        <Search />
       </Provider>,
     )
   it('Should renders correctly', () => {
@@ -43,7 +40,7 @@ describe('Search', () => {
     const { getByText } = getComponent()
     const submit = getByText('SEARCH')
     fireEvent.click(submit)
-    expect(history.location.pathname).toBe('/')
+    expect(useRouter().push).toBeCalled()
   })
   it('Should change pathname after call onSubmit with input value', () => {
     const { getByRole, getByText } = getComponent()
@@ -51,6 +48,6 @@ describe('Search', () => {
     const input = getByRole('textbox', { name: '' })
     fireEvent.change(input, { target: { value: 'test' } })
     fireEvent.click(submit)
-    expect(history.location.pathname).toBe('/search/test')
+    expect(useRouter().push).toBeCalled()
   })
 })

@@ -1,4 +1,4 @@
-import { getCorrectGenres, getReleaseYear, getSortQuery, getFilterQuery } from './helpers'
+import { getCorrectGenres, getReleaseYear, getSortQuery, getFilterQuery, createUrl } from './helpers'
 
 describe('helpers functions', () => {
   it('from array to string genres', () => {
@@ -17,5 +17,10 @@ describe('helpers functions', () => {
   it('get correct filter query', () => {
     expect(getFilterQuery('all')).toBe('')
     expect(getFilterQuery('comedy')).toBe('comedy')
+  })
+  it('get correct url', () => {
+    expect(createUrl('all', 'RELEASE DATE', '')).toBe(
+      'http://localhost:4000/movies?searchBy=title&sortOrder=desc&limit=360&filter=&sortBy=release_date&search=',
+    )
   })
 })
