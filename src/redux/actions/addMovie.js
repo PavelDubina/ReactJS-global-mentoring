@@ -2,7 +2,7 @@ import fetchMovies from './fetchMovies'
 import { BASE_URL } from '../../utils/constants'
 
 const addMovie = (content) => async (dispatch, getState) => {
-  const { sortBy, filter } = getState().moviesData
+  const { sortBy, filter, search } = getState().moviesData
   try {
     const response = await fetch(`${BASE_URL}`, {
       method: 'POST',
@@ -10,7 +10,7 @@ const addMovie = (content) => async (dispatch, getState) => {
       body: JSON.stringify(content),
     })
     if (response.status === 201) {
-      dispatch(fetchMovies({ sortBy, filter }))
+      dispatch(fetchMovies({ sortBy, filter, search }))
     }
   } catch (error) {
     console.log(error)

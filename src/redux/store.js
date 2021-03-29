@@ -5,9 +5,8 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import rootReducer from './reducers/rootReducer'
 
 let store
-function initStore(initialState) {
-  return createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(thunk)))
-}
+const initStore = (initialState) => createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(thunk)))
+
 export const initializeStore = (preloadedState) => {
   let _store = store ?? initStore(preloadedState)
   if (preloadedState && store) {
@@ -21,7 +20,7 @@ export const initializeStore = (preloadedState) => {
   if (!store) store = _store
   return _store
 }
-export function useStore(initialState) {
+export const useStore = (initialState) => {
   const store = useMemo(() => initializeStore(initialState), [initialState])
   return store
 }

@@ -5,6 +5,7 @@ const initialState = {
   movies: [],
   sortBy: sortingValues.RELEASE_DATE,
   filter: navGenres.all,
+  search: '',
   error: false,
   isLoading: false,
 }
@@ -24,6 +25,7 @@ const moviesReducer = (state = initialState, action) => {
         movies: action.payload.data,
         sortBy: action.payload.sortBy,
         filter: action.payload.filter,
+        search: action.payload.search,
         error: !action.payload.data.length,
       }
     case SEARCH_MOVIES_ERROR:

@@ -24,7 +24,7 @@ const fetchMovies = ({ sortBy = '', filter = '', search = '' }) => async (dispat
       )}&search=${search}`,
     )
     const movies = await response.json()
-    dispatch(fetchDataSuccess({ data: movies.data, sortBy, filter }))
+    dispatch(fetchDataSuccess({ data: movies.data, sortBy, filter, search }))
   } catch (error) {
     dispatch(fetchDataError())
   }
