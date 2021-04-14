@@ -1,1 +1,2 @@
 "ignorePatterns": ["dist/*"]
+*.test.tsx

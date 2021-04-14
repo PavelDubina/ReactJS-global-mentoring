@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SuccessMessage Should renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="modal_backdrop"
+  >
+    <div
+      class="modal_window"
+    >
+      <div
+        class="close_btn"
+      >
+        ×
+      </div>
+      <h1
+        class="title"
+      />
+      <div
+        class="container"
+      >
+        <div
+          class="img"
+        />
+        <h1>
+          success.title
+        </h1>
+        <p>
+          success.desc
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

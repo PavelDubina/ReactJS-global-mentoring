@@ -1,6 +1,6 @@
 module.exports = {
   collectCoverage: true,
-  collectCoverageFrom: ['src/**/*.{js,jsx}'],
+  collectCoverageFrom: ['src/**/*.{js,jsx,tsx}'],
   coveragePathIgnorePatterns: ['index.js'],
   coverageDirectory: './coverage',
   moduleNameMapper: {

@@ -1,0 +1,258 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieList Should renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <div
+      class="section"
+    >
+      <nav
+        class="container"
+      >
+        <div
+          class="genres"
+        >
+          <div
+            class="genre active"
+          >
+            nav.genres.all
+          </div>
+          <div
+            class="genre"
+          >
+            nav.genres.documentary
+          </div>
+          <div
+            class="genre"
+          >
+            nav.genres.comedy
+          </div>
+          <div
+            class="genre"
+          >
+            nav.genres.horror
+          </div>
+          <div
+            class="genre"
+          >
+            nav.genres.crime
+          </div>
+        </div>
+        <div
+          class="sort"
+        >
+          <span>
+            nav.sort.by
+          </span>
+          <div
+            class="select"
+            data-testid="select"
+          >
+            nav.sort.release_date
+            <div
+              class="dropdown"
+              data-testid="dropdown"
+            >
+              <p
+                class="active"
+                data-testid="RELEASE DATE"
+              >
+                nav.sort.release_date
+              </p>
+              <p
+                class=""
+                data-testid="RATING"
+              >
+                nav.sort.vote_average
+              </p>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div
+        class="result__count"
+      >
+        <span
+          class="result__count_number"
+        >
+          1
+        </span>
+        <span>
+          found
+        </span>
+      </div>
+      <div
+        class="list"
+      >
+        <div
+          class="container"
+        >
+          <div
+            class="poster"
+          >
+            <img
+              alt="poster"
+              height="16"
+              src="https://image.tmdb.org/t/p/w500/5wioUjzwr91fvq7ydunxK2CPSxi.jpg"
+              width="9"
+            />
+            <div
+              class="menu"
+              data-testid="menu"
+            >
+              <div
+                class="menu"
+                data-testid="card-menu"
+              >
+                <div />
+                <div />
+                <div />
+              </div>
+            </div>
+          </div>
+          <div
+            class="movie__data"
+          >
+            <div
+              class="movie__data_info"
+            >
+              <h2
+                class="movie__data_info_title"
+              >
+                Noah
+              </h2>
+              <p
+                class="movie__data_info_genres"
+              >
+                Drama & Adventure
+              </p>
+            </div>
+            <div
+              class="movie__data_date"
+            >
+              <span>
+                2014
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="scroll_to_top"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`MovieList Should renders correctly with loading 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <div
+      class="section"
+    >
+      <nav
+        class="container"
+      >
+        <div
+          class="genres"
+        >
+          <div
+            class="genre active"
+          >
+            nav.genres.all
+          </div>
+          <div
+            class="genre"
+          >
+            nav.genres.documentary
+          </div>
+          <div
+            class="genre"
+          >
+            nav.genres.comedy
+          </div>
+          <div
+            class="genre"
+          >
+            nav.genres.horror
+          </div>
+          <div
+            class="genre"
+          >
+            nav.genres.crime
+          </div>
+        </div>
+        <div
+          class="sort"
+        >
+          <span>
+            nav.sort.by
+          </span>
+          <div
+            class="select"
+            data-testid="select"
+          >
+            nav.sort.release_date
+            <div
+              class="dropdown"
+              data-testid="dropdown"
+            >
+              <p
+                class="active"
+                data-testid="RELEASE DATE"
+              >
+                nav.sort.release_date
+              </p>
+              <p
+                class=""
+                data-testid="RATING"
+              >
+                nav.sort.vote_average
+              </p>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div
+        class="result__count"
+      >
+        <span
+          class="result__count_number"
+        >
+          0
+        </span>
+        <span>
+          found
+        </span>
+      </div>
+      <div
+        class="list"
+      />
+      <div
+        class="lds_spinner"
+      >
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+      </div>
+    </div>
+    <div
+      class="scroll_to_top"
+    />
+  </div>
+</DocumentFragment>
+`;

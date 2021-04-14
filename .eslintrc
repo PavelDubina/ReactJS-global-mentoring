@@ -1,11 +1,23 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "ecmaVersion": 2018,
     "sourceType": "module",
-    "allowImportExportEverywhere": false,
-    "codeFrame": false
+    "ecmaFeatures": {
+      "jsx": true,
+      "tsx": true
+    }
   },
-  "extends": ["airbnb", "prettier"],
+  "extends": [
+    "airbnb",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
+  ],
   "env": {
     "browser": true,
     "jest": true
@@ -14,7 +26,7 @@
     "max-len": ["error", { "code": 120 }],
     "prefer-promise-reject-errors": ["off"],
     "react/jsx-filename-extension": ["off"],
-    "react/prop-types": ["warn"],
+    "react/prop-types": ["off"],
     "no-return-assign": ["off"],
     "no-restricted-syntax": 0,
     "no-nested-ternary": 0,
@@ -30,5 +42,20 @@
     "camelcase": ["off"],
     "react/jsx-props-no-spreading": 0,
     "jsx-a11y/no-noninteractive-element-interactions": 0,
+    "import/no-mutable-exports": 0,
+    "no-underscore-dangle": 0,
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "import/extensions": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    },
+    "react": {
+      "version": "detect"
+    }
   }
 }
