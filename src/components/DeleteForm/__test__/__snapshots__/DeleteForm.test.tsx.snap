@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeleteForm Should renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="modal_backdrop"
+  >
+    <div
+      class="modal_window"
+    >
+      <div
+        class="close_btn"
+      >
+        ×
+      </div>
+      <h1
+        class="title"
+      >
+        deleteModal.title
+      </h1>
+      <div
+        class="container"
+      >
+        <p>
+          deleteModal.description
+        </p>
+        <div
+          class="confirm_btn"
+        >
+          <button
+            class="confirm"
+            type="button"
+          >
+            deleteModal.deleteBtn
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

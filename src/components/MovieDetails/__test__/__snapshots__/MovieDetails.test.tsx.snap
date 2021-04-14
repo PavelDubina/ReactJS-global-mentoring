@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieDetails Should renders correctly if movie found 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <img
+      alt="poster"
+      height="16"
+      src="https://image.tmdb.org/t/p/w500/ylXCdC106IKiarftHkcacasaAcb.jpg"
+      width="9"
+    />
+    <div
+      class="info"
+    >
+      <div
+        class="name_and_rating"
+      >
+        <h1
+          class="name"
+        >
+          La La Land
+        </h1>
+        <div
+          class="rating"
+        >
+          7.9
+        </div>
+      </div>
+      <div
+        class="duration_and_release"
+      >
+        <p>
+          2016
+        </p>
+        <p
+          class="runtime"
+        >
+          128 min
+        </p>
+      </div>
+      <p
+        class="overview"
+      >
+        Mia, an aspiring actress, serves lattes to movie stars in between auditions and Sebastian, a jazz musician, scrapes by playing cocktail party gigs in dingy bars, but as success mounts they are faced with decisions that begin to fray the fragile fabric of their love affair, and the dreams they worked so hard to maintain in each other threaten to rip them apart.
+      </p>
+    </div>
+    <img
+      alt="icon"
+      class="search_icon"
+      src="test-file-stub"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`MovieDetails Should renders correctly if movie not found 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <p
+      class="not_found"
+    >
+      No movie found
+    </p>
+    <img
+      alt="icon"
+      class="search_icon"
+      src="test-file-stub"
+    />
+  </div>
+</DocumentFragment>
+`;

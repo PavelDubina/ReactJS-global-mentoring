@@ -1,0 +1,157 @@
+{
+  "search": {
+    "title": "FIND YOUR MOVIE",
+    "placeholder": "What do you want to watch?",
+    "searchBtn": "SEARCH",
+    "addBtn": "+ ADD MOVIE"
+  },
+  "nav": {
+    "genres": {
+      "all": "all",
+      "documentary": "documentary",
+      "comedy": "comedy",
+      "horror": "horror",
+      "crime": "crime"
+    },
+    "sort": {
+      "by": "SORT BY",
+      "release_date": "RELEASE DATE",
+      "vote_average": "RATING"
+    }
+  },
+  "found": "movies found",
+  "menu": {
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "deleteModal": {
+    "title": "DELETE MOVIE",
+    "description": "Are you sure you want delete this movie?",
+    "deleteBtn": "CONFIRM"
+  },
+  "addModal": {
+    "title": "ADD MOVIE",
+    "input": {
+      "title": "TITLE",
+      "date": "RELEASE DATE",
+      "poster": "POSTER PATH",
+      "genre": "GENRE",
+      "overview": "OVERVIEW",
+      "runtime": "RUNTIME"
+    },
+    "placeholders": {
+      "title": "Title here",
+      "poster": "Poster URL here",
+      "genre": "Select Genre",
+      "overview": "Overview here",
+      "runtime": "Runtime here"
+    },
+    "validation": {
+      "title": "Required",
+      "poster": {
+        "required": "Required",
+        "url": "Enter correct url, like http://exmple.com"
+      },
+      "date": {
+        "max": "Release date must be at earler than today",
+        "required": "Required"
+      },
+      "genre": "Select at least one genre to be proceed",
+      "overview": "Required",
+      "runtime": {
+        "required": "Required",
+        "positive": "Runtime must be a positive number",
+        "integer": "Runtime must be an integer"
+      }
+    },
+    "genres": {
+      "action": "action",
+      "adventure": "adventure",
+      "animation": "animation",
+      "comedy": "comedy",
+      "crime": "crime",
+      "documentary": "documentary",
+      "drama": "drama",
+      "family": "family",
+      "fantasy": "fantasy",
+      "history": "history",
+      "horror": "horror",
+      "music": "music",
+      "mystery": "mystery",
+      "romance": "romance",
+      "science fiction": "science fiction",
+      "thriller": "thriller",
+      "war": "war",
+      "western": "western"
+    },
+    "reset": "RESET",
+    "submit": "SUBMIT"
+  },
+  "success": {
+    "title": "CONGRATULATIONS !",
+    "desc": "The movie has been added to database successfully"
+  },
+  "404": {
+    "title": "PAGE NOT FOUND",
+    "btn": "GO BACK TO HOME"
+  },
+  "editModal": {
+    "title": "EDIT MOVIE",
+    "input": {
+      "id": "MOVIE ID",
+      "title": "TITLE",
+      "date": "RELEASE DATE",
+      "poster": "POSTER PATH",
+      "genre": "GENRE",
+      "overview": "OVERVIEW",
+      "runtime": "RUNTIME"
+    },
+    "placeholders": {
+      "title": "Title here",
+      "poster": "Poster URL here",
+      "genre": "Select Genre",
+      "overview": "Overview here",
+      "runtime": "Runtime here"
+    },
+    "validation": {
+      "title": "Required",
+      "poster": {
+        "required": "Required",
+        "url": "Enter correct url, like http://exmple.com"
+      },
+      "date": {
+        "max": "Release date must be at earler than today",
+        "required": "Required"
+      },
+      "genre": "Select at least one genre to be proceed",
+      "overview": "Required",
+      "runtime": {
+        "required": "Required",
+        "positive": "Runtime must be a positive number",
+        "integer": "Runtime must be an integer"
+      }
+    },
+    "genres": {
+      "action": "action",
+      "adventure": "adventure",
+      "animation": "animation",
+      "comedy": "comedy",
+      "crime": "crime",
+      "documentary": "documentary",
+      "drama": "drama",
+      "family": "family",
+      "fantasy": "fantasy",
+      "history": "history",
+      "horror": "horror",
+      "music": "music",
+      "mystery": "mystery",
+      "romance": "romance",
+      "science fiction": "science fiction",
+      "thriller": "thriller",
+      "war": "war",
+      "western": "western"
+    },
+    "reset": "RESET",
+    "submit": "SAVE"
+  }
+}

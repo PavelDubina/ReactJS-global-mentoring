@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar Should renders correctly 1`] = `
+<DocumentFragment>
+  <nav
+    class="container"
+  >
+    <div
+      class="genres"
+    >
+      <div
+        class="genre active"
+      >
+        nav.genres.all
+      </div>
+      <div
+        class="genre"
+      >
+        nav.genres.documentary
+      </div>
+      <div
+        class="genre"
+      >
+        nav.genres.comedy
+      </div>
+      <div
+        class="genre"
+      >
+        nav.genres.horror
+      </div>
+      <div
+        class="genre"
+      >
+        nav.genres.crime
+      </div>
+    </div>
+    <div
+      class="sort"
+    >
+      <span>
+        nav.sort.by
+      </span>
+      <div
+        class="select"
+        data-testid="select"
+      >
+        nav.sort.
+        <div
+          class="dropdown"
+          data-testid="dropdown"
+        >
+          <p
+            class=""
+            data-testid="RELEASE DATE"
+          >
+            nav.sort.release_date
+          </p>
+          <p
+            class=""
+            data-testid="RATING"
+          >
+            nav.sort.vote_average
+          </p>
+        </div>
+      </div>
+    </div>
+  </nav>
+</DocumentFragment>
+`;

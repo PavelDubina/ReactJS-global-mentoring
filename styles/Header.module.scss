@@ -35,3 +35,34 @@
   cursor: pointer;
   z-index: 50;
 }
+
+.en,
+.ru {
+  position: absolute;
+  width: 32px;
+  height: 22px;
+  cursor: pointer;
+  z-index: 15;
+}
+
+.ru {
+  left: 240px;
+
+  &::after {
+    content: url('../public/RUS.svg');
+    padding: 0 0 0 8px;
+  }
+}
+
+.en {
+  left: 200px;
+
+  &::after {
+    content: url('../public/Britain.svg');
+    padding: 0 0 0 8px;
+  }
+}
+
+.locale_active {
+  box-shadow: #f65261 0 0 5px 2px;
+}

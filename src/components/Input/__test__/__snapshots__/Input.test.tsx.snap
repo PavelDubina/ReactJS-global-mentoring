@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Should renders correctly 1`] = `
+<DocumentFragment>
+  <label
+    class="label"
+  >
+    test title
+    <input
+      autocomplete="off"
+      class="input"
+      data-testid="test name"
+      name="test name"
+      placeholder="test placeholder"
+      type="text"
+      value="test value"
+    />
+    <p
+      class="error"
+      data-testid="error"
+    >
+      This is test error
+    </p>
+  </label>
+</DocumentFragment>
+`;
