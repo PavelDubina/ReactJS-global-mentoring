@@ -12,7 +12,7 @@ type NavbarProps = {
   handleMenu: (genre: string) => void
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ genreValue, sortValue, toggleSortValue, handleMenu }) => {
+export const Navbar: React.FC<NavbarProps> = React.memo(({ genreValue, sortValue, toggleSortValue, handleMenu }) => {
   const { t } = useTranslation()
   return (
     <nav className={styles.container}>
@@ -32,4 +32,4 @@ export const Navbar: React.FC<NavbarProps> = ({ genreValue, sortValue, toggleSor
       </div>
     </nav>
   )
-}
+})

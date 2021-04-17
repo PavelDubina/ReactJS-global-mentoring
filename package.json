@@ -11,7 +11,9 @@
     "lint": "eslint src --ext .js,.jsx,.tsx",
     "prettier": "prettier --write src/**/*.jsx,.tsx",
     "lint:fix": "eslint --fix src --ext .js,.jsx,.tsx",
-    "lint:style": "stylelint **/*.scss"
+    "lint:style": "stylelint **/*.scss",
+    "storybook": "start-storybook -p 6006 -s ./public",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -32,6 +34,9 @@
     "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "^7.12.10",
     "@babel/preset-react": "^7.12.10",
+    "@storybook/addon-actions": "^6.2.8",
+    "@storybook/addon-essentials": "^6.2.8",
+    "@storybook/addon-links": "^6.2.8",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@types/classnames": "^2.2.11",
@@ -56,16 +61,19 @@
     "node-sass": "^5.0.0",
     "prettier": "^2.2.1",
     "redux-mock-store": "^1.5.4",
+    "storybook-addon-i18n": "^5.1.13",
     "stylelint": "^13.12.0",
     "stylelint-config-standard": "^20.0.0",
     "typescript": "^4.2.4"
   },
   "dependencies": {
+    "@storybook/react": "^6.2.8",
     "@babel/plugin-transform-typescript": "^7.13.0",
     "@babel/preset-typescript": "^7.13.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.13",
+    "@storybook/preset-scss": "^1.0.3",
     "@testing-library/dom": "^7.30.0",
     "@testing-library/react": "^11.2.5",
     "@types/jest": "^26.0.22",
@@ -77,6 +85,7 @@
     "@typescript-eslint/eslint-plugin": "^4.20.0",
     "babel-eslint": "^10.1.0",
     "classnames": "^2.2.6",
+    "css-loader": "^5.2.1",
     "fetch-mock": "^9.11.0",
     "formik": "^2.2.6",
     "history": "^5.0.0",
@@ -99,6 +108,10 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+    "sass": "^1.32.8",
+    "sass-loader": "^10.1.1",
+    "storybook-addon-next-router": "^2.0.4",
+    "style-loader": "^2.0.0",
     "yup": "^0.32.9"
   },
   "husky": {

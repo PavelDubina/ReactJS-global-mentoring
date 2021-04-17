@@ -22,7 +22,7 @@
 .section {
   height: 100%;
   position: relative;
-  max-width: 1280px;
+  max-width: 1024px;
   margin: 0 auto;
   padding: 18px 0;
 }
@@ -65,4 +65,10 @@
 
 .locale_active {
   box-shadow: #f65261 0 0 5px 2px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 36px;
+  }
 }

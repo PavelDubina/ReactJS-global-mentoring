@@ -44,3 +44,24 @@
 .add_btn {
   align-self: flex-end;
 }
+
+@media (max-width: 1024px) {
+  .title {
+    font-size: 42px;
+  }
+
+  .input {
+    font-size: 20px;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .title {
+    font-size: 38px;
+  }
+
+  .input {
+    height: 46px;
+  }
+}

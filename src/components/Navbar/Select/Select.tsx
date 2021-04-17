@@ -11,7 +11,7 @@ type SelectProps = {
   toggleSortValue: (sortValue: string) => void
 }
 
-export const Select: React.FC<SelectProps> = ({ value, toggleSortValue }) => {
+export const Select: React.FC<SelectProps> = React.memo(({ value, toggleSortValue }) => {
   const { t } = useTranslation()
   const ref = useRef(null)
   const [isOpen, setIsOpen] = useState(false)
@@ -33,4 +33,4 @@ export const Select: React.FC<SelectProps> = ({ value, toggleSortValue }) => {
       </div>
     </div>
   )
-}
+})

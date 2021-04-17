@@ -6,7 +6,7 @@ import styles from '../../../styles/Header.module.scss'
 import ruIcon from '../../../public/RUS.svg'
 import enIcon from '../../../public/Britain.svg'
 
-type HeaderProps = {
+export type HeaderProps = {
   children: React.ReactNode
 }
 

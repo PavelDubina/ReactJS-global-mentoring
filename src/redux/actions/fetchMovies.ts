@@ -53,7 +53,7 @@ const fetchMovies = ({
   try {
     dispatch(fetchData())
     const response = await fetch(
-      `${BASE_URL}?searchBy=title&sortOrder=desc&limit=360&filter=${getFilterQuery(filter)}&sortBy=${getSortQuery(
+      `${BASE_URL}?searchBy=title&sortOrder=desc&limit=120&filter=${getFilterQuery(filter)}&sortBy=${getSortQuery(
         sortBy,
       )}&search=${search}`,
     )

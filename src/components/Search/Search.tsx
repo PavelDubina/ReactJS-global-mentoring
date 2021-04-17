@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { Button, EType } from '../Button/Button'
+import { Button, EStyleTypeBtn, EType } from '../Button/Button'
 import { AddForm } from '../AddForm/AddForm'
 import { SuccessMessage } from '../SuccessMessage/SuccessMessage'
 import styles from '../../../styles/Search.module.scss'
@@ -30,11 +30,12 @@ export const Search: React.FC = () => {
     <>
       <div className={styles.container}>
         <div className={styles.add_btn}>
-          <Button onClick={onOpenModal} styleType="adding">
+          <Button onClick={onOpenModal} styleType={EStyleTypeBtn.adding}>
             {t('search.addBtn')}
           </Button>
         </div>
         <h1 className={styles.title}>{t('search.title')}</h1>
+        {/* PATTERN:{Controlled input} */}
         <form onSubmit={onSubmit} className={styles.form}>
           <input
             onChange={handleChange}
@@ -44,7 +45,7 @@ export const Search: React.FC = () => {
             placeholder={t('search.placeholder')}
           />
           <div className={styles.search_btn}>
-            <Button type={EType.submit} styleType="search">
+            <Button type={EType.submit} styleType={EStyleTypeBtn.search}>
               {t('search.searchBtn')}
             </Button>
           </div>

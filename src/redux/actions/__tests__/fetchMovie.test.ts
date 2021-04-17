@@ -30,7 +30,7 @@ describe('async action fetchMovie', () => {
         payload: movie,
       },
     ]
-    const store = mockStore({})
+    const store = mockStore()
     await store.dispatch(fetchMovie('313369'))
     expect(store.getActions()).toEqual(expectedActions)
   })
@@ -48,7 +48,7 @@ describe('async action fetchMovie', () => {
         payload: new TypeError('Failed to fetch'),
       },
     ]
-    const store = mockStore({})
+    const store = mockStore()
     await store.dispatch(fetchMovie('313369'))
     expect(store.getActions()).toEqual(expectedActions)
   })

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { useOutsideClick } from '../../Hooks/useClickOutside'
 import styles from '../../../styles/Modal.module.scss'
 
-type ModalProps = {
+export type ModalProps = {
   title?: string
   onClose: (isMessage?: boolean) => void
   children: React.ReactNode

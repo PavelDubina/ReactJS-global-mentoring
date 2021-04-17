@@ -22,3 +22,10 @@
   font-size: 12px;
   right: 0;
 }
+
+@media (max-width: 768px) {
+  .input {
+    font-size: 20px;
+    line-height: 40px;
+  }
+}

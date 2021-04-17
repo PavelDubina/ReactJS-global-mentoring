@@ -39,3 +39,24 @@
   border: 1px solid #f65261;
   color: #f65261;
 }
+
+@media (max-width: 1024px) {
+  .search {
+    padding: 14px;
+  }
+
+  .adding {
+    padding: 11px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search {
+    width: 148px;
+    padding: 10px;
+  }
+
+  .adding {
+    padding: 10px;
+  }
+}
