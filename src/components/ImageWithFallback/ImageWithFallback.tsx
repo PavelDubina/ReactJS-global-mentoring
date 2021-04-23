@@ -7,7 +7,7 @@ type ImageWithFallbackProps = {
   onClick?: () => void
 }
 
-export const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({ src = Poster, onClick, id }) => {
+export const ImageWithFallback: React.FC<ImageWithFallbackProps> = React.memo(({ src = Poster, onClick, id }) => {
   const [error, setError] = useState(false)
   const onImageError = () => setError(true)
   const imgSrc = !error ? src : Poster
@@ -15,4 +15,4 @@ export const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({ src = Post
     if (id) setError(false)
   }, [src, id])
   return <img onError={onImageError} onClick={onClick} src={imgSrc} width="9" height="16" alt="poster" />
-}
+})

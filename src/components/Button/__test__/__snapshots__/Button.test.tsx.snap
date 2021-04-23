@@ -3,7 +3,7 @@
 exports[`Button Should renders correctly 1`] = `
 <DocumentFragment>
   <button
-    class="testStyle"
+    class="adding"
     type="button"
   >
     Test Button

@@ -7,15 +7,25 @@ export enum EType {
   reset = 'reset',
 }
 
-type ButtonProps = {
+export enum EStyleTypeBtn {
+  adding = 'adding',
+  search = 'search',
+  confirm = 'confirm',
+  reset = 'reset',
+  disabled = 'disabled',
+  back_home = 'back_home',
+}
+
+export type ButtonProps = {
   type?: EType
-  styleType: string
+  styleType: EStyleTypeBtn
   children: React.ReactNode
   onClick?: () => void
 }
 
-export const Button: React.FC<ButtonProps> = ({ type = EType.button, styleType, children, onClick }) => (
+// PATTERN:{Destructuring props}
+export const Button: React.FC<ButtonProps> = React.memo(({ type = EType.button, styleType, children, onClick }) => (
   <button type={type} onClick={onClick} className={styles[styleType]}>
     {children}
   </button>
-)
+))

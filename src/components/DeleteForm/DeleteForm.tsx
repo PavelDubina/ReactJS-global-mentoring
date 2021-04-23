@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useTranslation } from 'next-i18next'
-import { Button } from '../Button/Button'
+import { Button, EStyleTypeBtn } from '../Button/Button'
 import { Modal } from '../Modal/Modal'
 import deleteMovie from '../../redux/actions/deleteMovie'
 import styles from '../../../styles/DeleteForm.module.scss'
@@ -23,7 +23,7 @@ export const DeleteForm: React.FC<DeleteFormProps> = ({ id, onClose }) => {
       <div className={styles.container}>
         <p>{t('deleteModal.description')}</p>
         <div className={styles.confirm_btn}>
-          <Button onClick={onDelete} styleType="confirm">
+          <Button onClick={onDelete} styleType={EStyleTypeBtn.confirm}>
             {t('deleteModal.deleteBtn')}
           </Button>
         </div>

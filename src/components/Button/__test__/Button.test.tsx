@@ -1,9 +1,9 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import { Button } from '../Button'
+import { Button, EStyleTypeBtn } from '../Button'
 
 describe('Button', () => {
-  const getComponent = ({ onClick = jest.fn(), styleType = 'testStyle' }) =>
+  const getComponent = ({ onClick = jest.fn(), styleType = EStyleTypeBtn.adding }) =>
     render(
       <Button onClick={onClick} styleType={styleType}>
         Test Button

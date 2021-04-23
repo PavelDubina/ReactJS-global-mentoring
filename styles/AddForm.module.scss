@@ -24,3 +24,9 @@
   text-align: right;
   font-size: 12px;
 }
+
+@media (max-width: 768px) {
+  .btns {
+    margin-top: 52px;
+  }
+}

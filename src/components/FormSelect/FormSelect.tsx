@@ -13,7 +13,6 @@ type FormSelectProps = {
 
 export const FormSelect: React.FC<FormSelectProps> = ({ name, value, onChange }) => {
   const { t } = useTranslation()
-  console.log(t('addModal.genres.comedy'))
   const ref = useRef(null)
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const dropStyle = className(styles.dropdown, { [styles.visible]: isOpen })

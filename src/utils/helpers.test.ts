@@ -20,7 +20,7 @@ describe('helpers functions', () => {
   })
   it('get correct url', () => {
     expect(createUrl('all', 'RELEASE DATE', '')).toBe(
-      'http://localhost:4000/movies?searchBy=title&sortOrder=desc&limit=360&filter=&sortBy=release_date&search=',
+      'http://localhost:4000/movies?searchBy=title&sortOrder=desc&limit=120&filter=&sortBy=release_date&search=',
     )
   })
 })

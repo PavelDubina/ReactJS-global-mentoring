@@ -45,3 +45,13 @@
   line-height: 22px;
   color: #f65261;
 }
+
+@media (max-width: 768px) {
+  .modal_window {
+    width: 580px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+}

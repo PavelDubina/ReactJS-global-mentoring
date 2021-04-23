@@ -16,6 +16,7 @@ type Props = {
   pageProps: any
 }
 
+// PATTERN:{Destructuring props}
 const MyApp = ({ Component, pageProps }: Props) => {
   const store = useStore(pageProps.initialReduxState)
   return (
@@ -31,15 +32,15 @@ const MyApp = ({ Component, pageProps }: Props) => {
 MyApp.getInitialProps = async (appContext: AppContext) => {
   const appProps = await App.getInitialProps(appContext)
   const reduxStore = initializeStore({})
-  const { query = '', id } = appContext.router.query
+  const { query = '', id, sortBy = sortingValues.RELEASE_DATE, filter = navGenres.all } = appContext.router.query
   const { dispatch } = reduxStore
-  const responseMovies = await fetch(createUrl(navGenres.all, sortingValues.RELEASE_DATE, query as string))
+  const responseMovies = await fetch(createUrl(filter as string, sortBy as string, query as string))
   const movies = await responseMovies.json()
   dispatch(
     fetchDataSuccess({
       data: movies.data,
-      sortBy: sortingValues.RELEASE_DATE,
-      filter: navGenres.all,
+      sortBy: sortBy as string,
+      filter: filter as string,
       search: query as string,
     }),
   )

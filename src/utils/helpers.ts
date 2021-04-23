@@ -18,6 +18,6 @@ export const getSortQuery = (str: string) => {
 export const getFilterQuery = (str: string) => (str === navGenres.all ? '' : str)
 
 export const createUrl = (filter: string, sortBy: string, search: string) =>
-  `${BASE_URL}?searchBy=title&sortOrder=desc&limit=360&filter=${getFilterQuery(filter)}&sortBy=${getSortQuery(
+  `${BASE_URL}?searchBy=title&sortOrder=desc&limit=120&filter=${getFilterQuery(filter)}&sortBy=${getSortQuery(
     sortBy,
   )}&search=${search}`

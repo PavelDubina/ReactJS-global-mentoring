@@ -47,3 +47,33 @@
 .active {
   background-color: #f65261;
 }
+
+@media (max-width: 1024px) {
+  .select {
+    width: 160px;
+  }
+}
+
+@media (max-width: 768px) {
+  .select {
+    margin-left: 12px;
+    width: 160px;
+    font-size: 0;
+
+    &::after {
+      content: none;
+    }
+  }
+
+  .dropdown {
+    left: 0;
+    top: 0;
+    display: flex;
+    width: 252px;
+    font-size: 18px;
+
+    & p {
+      line-height: 22px;
+    }
+  }
+}

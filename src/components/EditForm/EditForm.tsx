@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import { useTranslation } from 'next-i18next'
-import { Button, EType } from '../Button/Button'
+import { Button, EStyleTypeBtn, EType } from '../Button/Button'
 import { FormSelect } from '../FormSelect/FormSelect'
 import { Modal } from '../Modal/Modal'
 import { Input } from '../Input/Input'
@@ -23,6 +23,8 @@ type EditFormProps = {
   onClose: () => void
 }
 
+// PATTERN:{Destructuring props}
+// PATTERN:{JSX spread attributes}
 export const EditForm: React.FC<EditFormProps> = ({ onClose, ...props }) => {
   const { t } = useTranslation()
   const dispatch = useDispatch()
@@ -107,10 +109,10 @@ export const EditForm: React.FC<EditFormProps> = ({ onClose, ...props }) => {
                 />
               </form>
               <div className={styles.btns}>
-                <Button onClick={handleReset} styleType="reset">
+                <Button onClick={handleReset} styleType={EStyleTypeBtn.reset}>
                   {t('editModal.reset')}
                 </Button>
-                <Button type={EType.submit} onClick={handleSubmit} styleType="confirm">
+                <Button type={EType.submit} onClick={handleSubmit} styleType={EStyleTypeBtn.confirm}>
                   {t('editModal.submit')}
                 </Button>
               </div>

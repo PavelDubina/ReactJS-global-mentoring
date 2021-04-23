@@ -23,8 +23,8 @@ export const MovieList: React.FC = () => {
   const { t } = useTranslation()
   const dispatch = useDispatch()
   const router = useRouter()
-  const { query, id } = router.query
-  const { movies, isLoading, error, sortBy, filter, search } = useSelector((state: TAppState) => state.moviesData)
+  const { query } = router.query
+  const { movies, isLoading, error, sortBy, filter } = useSelector((state: TAppState) => state.moviesData)
   const [genreValue, setGenreValue] = useState(filter)
   const [sortValue, setSortValue] = useState(sortBy)
   const [{ isOpen, status, movieData }, setMovie] = useState<TUseMovieState>({
@@ -57,13 +57,16 @@ export const MovieList: React.FC = () => {
         fetchMovies({
           filter: genreValue,
           sortBy: sortValue,
-          search: id ? search : (query as string),
+          search: query as string,
         }),
       )
     }
-  }, [genreValue, sortValue, query, id])
+  }, [genreValue, sortValue])
   const handleMovieDetails = (id: number) => {
-    router.push({ pathname: `/film/[id]`, query: { id } }, undefined, { scroll: false, shallow: true })
+    router.push({ pathname: `/film/[id]`, query: { id, query, sortBy, filter } }, undefined, {
+      scroll: false,
+      shallow: true,
+    })
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
   return (
@@ -92,6 +95,7 @@ export const MovieList: React.FC = () => {
               handleMovieDetails={handleMovieDetails}
             />
           ))}
+          {/* PATTERN:{Conditional rendering} */}
           {status === 'edit' && isOpen && (
             <EditForm
               onClose={onCloseModal}
@@ -106,8 +110,10 @@ export const MovieList: React.FC = () => {
               vote_count={movieData.vote_count}
             />
           )}
+          {/* PATTERN:{Conditional rendering} */}
           {status === 'delete' && isOpen && <DeleteForm id={movieData.id} onClose={onCloseModal} />}
         </div>
+        {/* PATTERN:{Conditional rendering} */}
         {error && <p className={styles.not_found}>Movies not found</p>}
         {isLoading && <Loading />}
       </div>

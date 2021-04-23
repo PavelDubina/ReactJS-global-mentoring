@@ -16,7 +16,7 @@ describe('async action fetchMovies', () => {
     fetchMock.restore()
   })
   it('creates SEARCH_MOVIES_SUCCESS when fetching movies has been done', async () => {
-    fetchMock.getOnce(`${BASE_URL}?searchBy=title&sortOrder=desc&limit=360&filter=&sortBy=&search=`, {
+    fetchMock.getOnce(`${BASE_URL}?searchBy=title&sortOrder=desc&limit=120&filter=&sortBy=&search=`, {
       headers: { 'content-type': 'application/json' },
       body: { data: movies },
     })
@@ -31,10 +31,10 @@ describe('async action fetchMovies', () => {
     ]
     const store = mockStore()
     await store.dispatch(fetchMovies({}))
-      expect(store.getActions()).toEqual(expectedActions)
+    expect(store.getActions()).toEqual(expectedActions)
   })
   it('creates SEARCH_MOVIES_ERROR when fetching movies has been error', async () => {
-    fetchMock.getOnce(`${BASE_URL}?searchBy=title&sortOrder=desc&limit=360&filter=&sortBy=&search=`, {
+    fetchMock.getOnce(`${BASE_URL}?searchBy=title&sortOrder=desc&limit=120&filter=&sortBy=&search=`, {
       headers: { 'content-type': 'application/json' },
       throws: new TypeError('Failed to fetch'),
     })

@@ -53,3 +53,37 @@
     color: #ffffff80;
   }
 }
+
+@media (max-width: 1024px) {
+  .container {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 56px;
+
+    &::after {
+      height: 2px;
+    }
+  }
+
+  .genres {
+    order: 2;
+  }
+
+  .sort {
+    order: 1;
+  }
+
+  .active {
+    padding-bottom: 4px;
+
+    &::after {
+      height: 2px;
+    }
+  }
+}
